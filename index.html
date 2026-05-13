@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burgão Mania - O Melhor Burger da Cidade</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0,0,0,0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255,107,53,0.4);
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23ff6b35" width="1200" height="800"/><circle fill="%23f7931e" opacity="0.3" cx="300" cy="200" r="200"/><circle fill="%23ff8e53" opacity="0.2" cx="900" cy="600" r="150"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 140px 2rem 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,107,53,0.9), rgba(247,147,30,0.8));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: #ff4757;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(255,107,53,0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 20px 40px;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #ff6b35;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 100px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(255,107,53,0.3);
+        }
+
+        .menu-image {
+            height: 220px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #2d2d2d;
+        }
+
+        .menu-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ff6b35;
+            margin: 1rem 0;
+        }
+
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 80px 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            display: block;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            background: #2d2d2d;
+            color: white;
+            padding: 100px 2rem;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🍔 Burgão Mania</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Cardápio</a></li>
+                <li><a href="#stats">Sobre</a></li>
+                <li><a href="#cta">Contato</a></li>
+            </ul>
+            <a href="#order" class="cta-header">
+                <i class="fas fa-shopping-cart"></i> Pedir Agora
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="promo-badge">🍟 2 POR 1 NA PRIMEIRA COMPRA</div>
+            <h1 class="animate">O MELHOR <span style="color: #fff;">BURGER</span> DA CIDADE</h1>
+            <p class="subtitle animate">Ingredientes frescos todos os dias • Delivery em 30min • Sabor que vicia!</p>
+            <div class="hero-buttons">
+                <a href="#order" class="btn-primary floating">
+                    <i class="fas fa-motorcycle"></i> Pedir Delivery
+                </a>
+                <a href="#menu" class="btn-secondary">
+                    Ver Cardápio Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <h2 class="section-title animate">🍔 Nosso Cardápio Estrela</h2>
+        <div class="menu-grid">
+            <div class="menu-item animate">
+                <div class="menu-image">
+                    <i class="fas fa-hamburger"></i>
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Mega Burgão</h3>
+                    <p>Carne 200g, queijo muçarela, cheddar, bacon crocante, cebola caramelizada e molho especial.</p>
+                    <div class="menu-price">R$ 29,90</div>
+                </div>
+            </div>
+            <div class="menu-item animate">
+                <div class="menu-image">
+                    <i class="fas fa-drumstick-bite"></i>
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Combo Família</h3>
+                    <p>3 Mega Burgões + 3 porções fritas + 3 refrigerantes 2L. Perfeito pra família!</p>
+                    <div class="menu-price">R$ 79,90</div>
+                </div>
+            </div>
+            <div class="menu-item animate">
+                <div class="menu-image">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Veggie Burgão</h3>
+                    <p>Hambúrguer de grão-de-bico, abacate, rúcula, tomate assado e molho de manga.</p>
+                    <div class="menu-price">R$ 27,90</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" id="stats">
+        <div class="stats-grid">
+            <div class="animate">
+                <span class="stat-number">5K+</span>
+                <span class="stat-label">Pedidos essa semana</span>
+            </div>
+            <div class="animate">
+                <span class="stat-number">30</span>
+                <span class="stat-label">Minutos delivery</span>
+            </div>
+            <div class="animate">
+                <span class="stat-number">4.9</span>
+                <span class="stat-label">Avaliação Google</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final" id="order">
+        <h2 class="animate">Fome? Peça agora!</h2>
+        <p class="animate" style="font-size: 1.3rem; margin-bottom: 2rem;">Use o cupom <strong>BURGAO30</strong> e ganhe 30% OFF na primeira compra!</p>
+        <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20fazer%20meu%20pedido%20do%20Burgão%20Mania!" target="_blank" class="btn-primary" style="font-size: 1.4rem; padding: 25px 60px;">
+            <i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp
+        </a>
+        <p style="margin-top: 2rem; opacity: 0.8; font-size: 1.1rem;">Delivery grátis acima de R$ 50 | Aceitamos todos os cartões</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>🍔 Burgão Mania - Rua das Flores, 123 • Centro • (11) 99999-9999 • Aberto até meia-noite</p>
+        <p style="margin-top: 1rem;">© 2024 Burgão Mania. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // WhatsApp auto-open
+        document.querySelectorAll('[href*="wa.me"]').forEach(link => {
+            link.addEventListener('click', function() {
+                // Analytics tracking aqui
+                console.log('Pedido iniciado via WhatsApp!');
+            });
+        });
+    </script>
+</body>
+</html>
